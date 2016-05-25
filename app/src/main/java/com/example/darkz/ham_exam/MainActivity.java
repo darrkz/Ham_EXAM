@@ -37,19 +37,20 @@ public class MainActivity extends AppCompatActivity {
         //question_content.setFontFeatureSettings();
         //question_content.setText(db_test.getQuestion("LK0001").getQuestion_content());
         String question_id_to_query="LK0497";
+        //String question_id_to_query="LK0001";
         answer_b.setText("[B]:"+db_test.getQuestion(question_id_to_query).getAnswer_b());
         answer_c.setText("[C]:"+db_test.getQuestion(question_id_to_query).getAnswer_c());
         answer_d.setText("[D]:"+db_test.getQuestion(question_id_to_query).getAnswer_d());
         picture_name_text.setText("图片名称:"+db_test.getQuestion(question_id_to_query).getPicture_name());
 
 //        if (db_test.getQuestion(question_id_to_query).getPicture_name().length() != 0)
-//            String file_path = "pic/" + db_test.getQuestion(question_id_to_query).getPicture_name();
-//            File file = new File(file_path);
-//            if (file.exists()) {
-//                Bitmap bm = BitmapFactory.decodeFile(file_path);
-//                //将图片显示到ImageView中
-//                picture_name.setImageBitmap(bm);
-//            }
+            String file_path = "pic/" + db_test.getQuestion(question_id_to_query).getPicture_name();
+            File file = new File(file_path);
+            if (file.exists()) {
+                Bitmap bm = BitmapFactory.decodeFile(file_path);
+                //将图片显示到ImageView中
+                picture_name.setImageBitmap(bm);
+            }
 //        //是否显示图片
 
     }
