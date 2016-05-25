@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         //question_content.setText(db_test.getQuestion("LK0001").getQuestion_content());
         String question_id_to_query="LK0497";
         //String question_id_to_query="LK0001";
+        answer_a.setText("[A]:"+db_test.getQuestion(question_id_to_query).getAnswer_a());
         answer_b.setText("[B]:"+db_test.getQuestion(question_id_to_query).getAnswer_b());
         answer_c.setText("[C]:"+db_test.getQuestion(question_id_to_query).getAnswer_c());
         answer_d.setText("[D]:"+db_test.getQuestion(question_id_to_query).getAnswer_d());
