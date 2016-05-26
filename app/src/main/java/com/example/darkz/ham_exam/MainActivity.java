@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         TextView answer_d         = (TextView) findViewById(R.id.answer_d_textView);
         TextView picture_name_text= (TextView) findViewById(R.id.picturetextView);
 
-        ImageView picture_name    = (ImageView) findViewById(R.id.picture_name);
+        ImageView question_picture    = (ImageView) findViewById(R.id.picture_name);
 
         // 从sqllite 中读取信息
         DBHandler db_test = new DBHandler(this);
@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         tp.setFakeBoldText(true);
         //question_content.setFontFeatureSettings();
         //question_content.setText(db_test.getQuestion("LK0001").getQuestion_content());
-        String question_id_to_query="LK0497";
-        //String question_id_to_query="LK0001";
+        //String question_id_to_query="LK0497";
+        String question_id_to_query="LK0001";
         answer_a.setText("[A]:"+db_test.getQuestion(question_id_to_query).getAnswer_a());
         answer_b.setText("[B]:"+db_test.getQuestion(question_id_to_query).getAnswer_b());
         answer_c.setText("[C]:"+db_test.getQuestion(question_id_to_query).getAnswer_c());
@@ -45,12 +45,12 @@ public class MainActivity extends AppCompatActivity {
         picture_name_text.setText("图片名称:"+db_test.getQuestion(question_id_to_query).getPicture_name());
 
 //        if (db_test.getQuestion(question_id_to_query).getPicture_name().length() != 0)
-            String file_path = "pic/" + db_test.getQuestion(question_id_to_query).getPicture_name();
+            String file_path = "/data/data/com.example.darkz.ham_exam/pic/" + db_test.getQuestion(question_id_to_query).getPicture_name();
             File file = new File(file_path);
             if (file.exists()) {
-                Bitmap bm = BitmapFactory.decodeFile(file_path);
+                Bitmap question_image = BitmapFactory.decodeFile(file_path);
                 //将图片显示到ImageView中
-                picture_name.setImageBitmap(bm);
+                question_picture.setImageBitmap(question_image);
             }
 //        //是否显示图片
 
