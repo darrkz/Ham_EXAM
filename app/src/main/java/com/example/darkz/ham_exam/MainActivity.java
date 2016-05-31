@@ -30,14 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
         // 从sqllite 中读取信息
         DBHandler db_test = new DBHandler(this);
-        question_content.setText("[Q]:"+db_test.getQuestion("LK0001").getQuestion_content());
-        TextPaint tp = question_content.getPaint();
-        tp.setTextSize(60);
-        tp.setFakeBoldText(true);
-        //question_content.setFontFeatureSettings();
-        //question_content.setText(db_test.getQuestion("LK0001").getQuestion_content());
-        //String question_id_to_query="LK0497";
-        String question_id_to_query="LK0001";
+
+        String question_id_to_query="LK0497";
+        //String question_id_to_query="LK0001";
+        question_content.setText("[Q]:"+db_test.getQuestion(question_id_to_query).getQuestion_content());
         answer_a.setText("[A]:"+db_test.getQuestion(question_id_to_query).getAnswer_a());
         answer_b.setText("[B]:"+db_test.getQuestion(question_id_to_query).getAnswer_b());
         answer_c.setText("[C]:"+db_test.getQuestion(question_id_to_query).getAnswer_c());
