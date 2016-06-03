@@ -7,6 +7,8 @@ import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextPaint;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,7 +30,9 @@ public class MainActivity extends AppCompatActivity {
         TextView answer_c         = (TextView) findViewById(R.id.answer_c_textView);
         TextView answer_d         = (TextView) findViewById(R.id.answer_d_textView);
         TextView picture_name_textView= (TextView) findViewById(R.id.picturetextView);
-
+        Button prvButton        = (Button) findViewById(R.id.prvButton);
+        Button submitButton     = (Button) findViewById(R.id.submitButton);
+        Button nextButton       = (Button) findViewById(R.id.nexButton);
         ImageView question_picture    = (ImageView) findViewById(R.id.picture_name);
 
         // 从sqllite 中读取信息
@@ -44,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         String picture_name_text=db_test.getQuestion(question_id_to_query).getPicture_name();
         picture_name_textView.setText("图片名称:" + picture_name_text);
 
-//        if (db_test.getQuestion(question_id_to_query).getPicture_name().length() != 0)
+            //if (db_test.getQuestion(question_id_to_query).getPicture_name().length() != 0)
             //普通的使用绝对路径的方式加载外部图片，图片和app分离的
             //String file_path = "/data/data/com.example.darkz.ham_exam/pic/" + db_test.getQuestion(question_id_to_query).getPicture_name();
             //String file_path = "/data/data/com.example.darkz.ham_exam/pic/" + db_test.getQuestion(question_id_to_query).getPicture_name();
@@ -70,7 +74,14 @@ public class MainActivity extends AppCompatActivity {
             //return;
             ex.printStackTrace();
         }
-//        //是否显示图片
+        //是否显示图片
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView.setText("1234");
+            }
+        });
 
     }
 }
