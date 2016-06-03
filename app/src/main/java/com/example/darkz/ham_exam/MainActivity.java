@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         TextView answer_c         = (TextView) findViewById(R.id.answer_c_textView);
         TextView answer_d         = (TextView) findViewById(R.id.answer_d_textView);
         TextView picture_name_textView= (TextView) findViewById(R.id.picturetextView);
+        TextView testView       = (TextView) findViewById(R.id.testView);
         Button prvButton        = (Button) findViewById(R.id.prvButton);
         Button submitButton     = (Button) findViewById(R.id.submitButton);
         Button nextButton       = (Button) findViewById(R.id.nexButton);
@@ -76,12 +77,11 @@ public class MainActivity extends AppCompatActivity {
         }
         //是否显示图片
 
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView.setText("1234");
-            }
-        });
 
+    }
+    public void submitQuestion(View view) {
+        TextView testView = (TextView)findViewById(R.id.testView);
+        testView.setText("你点击了Button");
+        //TODO: 根据时间点击更换activity的内容
     }
 }

@@ -119,7 +119,8 @@
             android:id="@+id/submitButton"
             android:layout_gravity="center_horizontal"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:onClick="submitQuestion"/>
 
         <Button
             android:layout_width="wrap_content"
