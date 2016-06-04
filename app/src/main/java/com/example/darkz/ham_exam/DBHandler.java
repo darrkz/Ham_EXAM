@@ -14,6 +14,9 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     // Database Name
+    //TODO:打包apk时将sqlite数据文件打包进去
+    //方法1.将assert目录中的db文件复制到存储空间
+    //参考：http://www.iteedu.com/handset/android/sqlitediary/simpledbtoapk.php
     private static final String DATABASE_NAME = "ham_test_data.db";
 
     // Contacts table name

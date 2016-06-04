@@ -83,5 +83,6 @@ public class MainActivity extends AppCompatActivity {
         TextView testView = (TextView)findViewById(R.id.testView);
         testView.setText("你点击了Button");
         //TODO: 根据时间点击更换activity的内容
+        //http://blog.csdn.net/pku_android/article/details/7310877
     }
 }
