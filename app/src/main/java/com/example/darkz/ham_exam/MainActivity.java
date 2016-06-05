@@ -15,8 +15,10 @@ import android.widget.TextView;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,17 +26,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //TextView question_id      = (TextView) findViewById(R.id.question_content_textview);
         //TextView question_level   = (TextView) findViewById(R.id.question_level);
-        TextView question_content = (TextView) findViewById(R.id.question_content_textview);
-        TextView answer_a         = (TextView) findViewById(R.id.answer_a_textView);
-        TextView answer_b         = (TextView) findViewById(R.id.answer_b_textView);
-        TextView answer_c         = (TextView) findViewById(R.id.answer_c_textView);
-        TextView answer_d         = (TextView) findViewById(R.id.answer_d_textView);
-        TextView picture_name_textView= (TextView) findViewById(R.id.picturetextView);
-        TextView testView       = (TextView) findViewById(R.id.testView);
-        Button prvButton        = (Button) findViewById(R.id.prvButton);
-        Button submitButton     = (Button) findViewById(R.id.submitButton);
-        Button nextButton       = (Button) findViewById(R.id.nexButton);
-        ImageView question_picture    = (ImageView) findViewById(R.id.picture_name);
+        TextView question_content       = (TextView) findViewById(R.id.question_content_textview);
+        TextView answer_a               = (TextView) findViewById(R.id.answer_a_textView);
+        TextView answer_b               = (TextView) findViewById(R.id.answer_b_textView);
+        TextView answer_c               = (TextView) findViewById(R.id.answer_c_textView);
+        TextView answer_d               = (TextView) findViewById(R.id.answer_d_textView);
+        TextView picture_name_textView  = (TextView) findViewById(R.id.picturetextView);
+        TextView testView               = (TextView) findViewById(R.id.testView);
+        Button prvButton                = (Button) findViewById(R.id.prvButton);
+        Button submitButton             = (Button) findViewById(R.id.submitButton);
+        Button nextButton               = (Button) findViewById(R.id.nexButton);
+        ImageView question_picture      = (ImageView) findViewById(R.id.picture_name);
+
+
 
         // 从sqllite 中读取信息
         DBHandler db_test = new DBHandler(this);

@@ -8,6 +8,14 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.Date;
+
 public class DBHandler extends SQLiteOpenHelper {
 
     // Database Version
@@ -16,8 +24,56 @@ public class DBHandler extends SQLiteOpenHelper {
     // Database Name
     //TODO:打包apk时将sqlite数据文件打包进去
     //方法1.将assert目录中的db文件复制到存储空间
-    //参考：http://www.iteedu.com/handset/android/sqlitediary/simpledbtoapk.php
-    private static final String DATABASE_NAME = "ham_test_data.db";
+    //参考: http://www.iteedu.com/handset/android/sqlitediary/simpledbtoapk.php
+    //https://libuchao.com/2012/03/09/embed-sqlite-database-in-the-apk-of-android-distributed-application
+
+
+    //获取一个对象所在的包名
+    Date date = new Date();
+    Package pack = date.getClass().getPackage();
+    String packName = pack.getName();
+
+    private  String DATABASE_NAME = "ham_test_data.db";
+    private  String DATABASE_DIR  = "/data/data/"+packName+"/databases/";
+    private  String DATABASE_PATH = DATABASE_DIR + DATABASE_NAME;
+    File db_file= new File(DATABASE_PATH);
+    File db_dir = new File(DATABASE_DIR);
+
+    if ((new File(DATABASE_PATH)).exists() is false) {
+        // 如 SQLite 数据库文件不存在，再检查一下 database 目录是否存在
+        // 如 database 目录不存在，新建该目录
+        if (!db_dir.exists()) {
+            f.mkdir();
+        }
+
+
+        try {
+            // 得到 assets 目录下我们实现准备好的 SQLite 数据库作为输入流
+            InputStream is = getBaseContext().getAssets().open(DATABASE_NAME);
+            // 输出流
+            OutputStream os = new FileOutputStream(DATABASE_PATH);
+
+            // 文件写入
+            byte[] buffer = new byte[1024];
+            int length;
+            while ((length = is.read(buffer)) > 0) {
+                os.write(buffer, 0, length);
+            }
+
+            // 关闭文件流
+            os.flush();
+            os.close();
+            is.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
+
+    private static final String DATABASE_NAME1 = "ham_test_data.db";
 
     // Contacts table name
     private static final String TABLE_SHOPS = "type_B";
@@ -34,7 +90,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
     public DBHandler(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, DATABASE_NAME1, null, DATABASE_VERSION);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
