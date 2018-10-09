@@ -1,29 +1,37 @@
 package com.example.darkz.ham_exam;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextPaint;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.File;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
+
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
-
+    public static String PACKAGE_NAME;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //获取package的名称
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Logger.addLogAdapter(new AndroidLogAdapter());
+        Logger.t("试试了").i("什么玩意");
+//        Logger.log("warn","调试", "就试试了");
+//        Logger.init("test");
+
+        PACKAGE_NAME = getApplicationContext().getPackageName();
+
+
         //TextView question_id      = (TextView) findViewById(R.id.question_content_textview);
         //TextView question_level   = (TextView) findViewById(R.id.question_level);
         TextView question_content       = (TextView) findViewById(R.id.question_content_textview);
@@ -32,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
         TextView answer_c               = (TextView) findViewById(R.id.answer_c_textView);
         TextView answer_d               = (TextView) findViewById(R.id.answer_d_textView);
         TextView picture_name_textView  = (TextView) findViewById(R.id.picturetextView);
-        TextView testView               = (TextView) findViewById(R.id.testView);
-        Button prvButton                = (Button) findViewById(R.id.prvButton);
-        Button submitButton             = (Button) findViewById(R.id.submitButton);
-        Button nextButton               = (Button) findViewById(R.id.nexButton);
+        //TextView testView               = (TextView) findViewById(R.id.testView);
+        //Button prvButton                = (Button) findViewById(R.id.prvButton);
+        //Button submitButton             = (Button) findViewById(R.id.submitButton);
+        //Button nextButton               = (Button) findViewById(R.id.nexButton);
         ImageView question_picture      = (ImageView) findViewById(R.id.picture_name);
 
 
@@ -52,17 +60,6 @@ public class MainActivity extends AppCompatActivity {
         answer_d.setText("[D]:"+db_test.getQuestion(question_id_to_query).getAnswer_d());
         String picture_name_text=db_test.getQuestion(question_id_to_query).getPicture_name();
         picture_name_textView.setText("图片名称:" + picture_name_text);
-
-            //if (db_test.getQuestion(question_id_to_query).getPicture_name().length() != 0)
-            //普通的使用绝对路径的方式加载外部图片，图片和app分离的
-            //String file_path = "/data/data/com.example.darkz.ham_exam/pic/" + db_test.getQuestion(question_id_to_query).getPicture_name();
-            //String file_path = "/data/data/com.example.darkz.ham_exam/pic/" + db_test.getQuestion(question_id_to_query).getPicture_name();
-            //File file = new File(file_path);
-            //if (file.exists()) {
-            //    Bitmap question_image = BitmapFactory.decodeFile(file_path);
-            //    //将图片显示到ImageView中
-            //    question_picture.setImageBitmap(question_image);
-            //}
 
         //从app内部的assert目录加载图片
         //注意assert目录的位置
