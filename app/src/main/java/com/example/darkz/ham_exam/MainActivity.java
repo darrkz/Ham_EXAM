@@ -49,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         // 从sqllite 中读取信息
-        DBHandler db_test = new DBHandler(this);
+//        DBHandler db_test = new DBHandler(this);
+        AssetDB db_test = new AssetDB(this);
 
         String question_id_to_query="LK0497";
         //String question_id_to_query="LK0001";

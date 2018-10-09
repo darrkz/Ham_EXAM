@@ -5,3 +5,5 @@ ham
 使用第三方库：
 com.orhanobut:logger： 日志美化
 
+android-sqlite-asset-helper:
+https://github.com/jgilfelt/android-sqlite-asset-helper
